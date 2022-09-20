@@ -1,0 +1,912 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+- phpMyAdmin XML Dump
+- version 5.0.3
+- https://www.phpmyadmin.net
+-
+- Host: 127.0.0.1
+- Generation Time: Sep 20, 2022 at 08:31 PM
+- Server version: 10.4.14-MariaDB
+- PHP Version: 7.2.34
+-->
+
+<pma_xml_export version="1.0" xmlns:pma="https://www.phpmyadmin.net/some_doc_url/">
+    <!--
+    - Structure schemas
+    -->
+    <pma:structure_schemas>
+        <pma:database name="si_keuangan" collation="utf8mb4_general_ci" charset="utf8mb4">
+            <pma:table name="catering">
+                CREATE TABLE `catering` (
+                  `id` int(11) NOT NULL AUTO_INCREMENT,
+                  `id_siswa` smallint(6) NOT NULL,
+                  `nominal` varchar(12) NOT NULL,
+                  `tanggal` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+                  `waktu` date NOT NULL,
+                  `time` date NOT NULL,
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="gaji">
+                CREATE TABLE `gaji` (
+                  `id` int(11) NOT NULL AUTO_INCREMENT,
+                  `id_guru` tinyint(4) NOT NULL,
+                  `periode` varchar(20) NOT NULL,
+                  `jam` varchar(4) NOT NULL,
+                  `nominal` varchar(12) NOT NULL,
+                  `time` date NOT NULL,
+                  `tanggal` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="guru">
+                CREATE TABLE `guru` (
+                  `id` int(11) NOT NULL AUTO_INCREMENT,
+                  `name` varchar(50) NOT NULL,
+                  `sex` enum('Pria','Wanita') NOT NULL,
+                  `nip` varchar(15) NOT NULL,
+                  `bidang` varchar(40) NOT NULL,
+                  `alamat` varchar(100) NOT NULL,
+                  `status` enum('Berhenti','Cuti','Aktif') NOT NULL,
+                  `number` varchar(15) NOT NULL,
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="kelas">
+                CREATE TABLE `kelas` (
+                  `id` int(11) NOT NULL AUTO_INCREMENT,
+                  `nama` varchar(15) NOT NULL,
+                  `wali` varchar(50) NOT NULL,
+                  `keterangan` varchar(100) NOT NULL,
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="lainnya">
+                CREATE TABLE `lainnya` (
+                  `id` int(11) NOT NULL AUTO_INCREMENT,
+                  `sekarang` varchar(15) NOT NULL,
+                  `time` date NOT NULL,
+                  `jenis` varchar(64) NOT NULL,
+                  `keterangan` varchar(100) NOT NULL,
+                  `nominal` varchar(12) NOT NULL,
+                  `tanggal` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="laporan">
+                CREATE TABLE `laporan` (
+                  `id` int(11) NOT NULL AUTO_INCREMENT,
+                  `saldo_awal` varchar(15) NOT NULL DEFAULT '0',
+                  `kas_masuk` varchar(15) DEFAULT '0',
+                  `kas_keluar` varchar(15) NOT NULL DEFAULT '0',
+                  `tanggal` date NOT NULL,
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="pembayaran">
+                CREATE TABLE `pembayaran` (
+                  `id` int(11) NOT NULL AUTO_INCREMENT,
+                  `nama` varchar(50) NOT NULL,
+                  `nominal` varchar(12) NOT NULL,
+                  `tipe` enum('KM','KK') NOT NULL,
+                  `kode` varchar(10) NOT NULL,
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="pendaftaran">
+                CREATE TABLE `pendaftaran` (
+                  `id` int(11) NOT NULL AUTO_INCREMENT,
+                  `nominal` varchar(12) NOT NULL,
+                  `time` date NOT NULL,
+                  `siswa` varchar(50) NOT NULL,
+                  `tanggal` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="pengeluaran">
+                CREATE TABLE `pengeluaran` (
+                  `id` int(11) NOT NULL AUTO_INCREMENT,
+                  `nominal` varchar(12) NOT NULL,
+                  `sekarang` varchar(10) NOT NULL,
+                  `time` date NOT NULL,
+                  `keterangan` text NOT NULL,
+                  `tanggal` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="siswa">
+                CREATE TABLE `siswa` (
+                  `id` int(11) NOT NULL AUTO_INCREMENT,
+                  `name` varchar(50) NOT NULL,
+                  `nis` varchar(15) NOT NULL,
+                  `sex` enum('Pria','Wanita') NOT NULL,
+                  `status` enum('Berhenti','Cuti','Aktif') NOT NULL,
+                  `wali` varchar(50) NOT NULL,
+                  `tempat` varchar(20) NOT NULL,
+                  `tanggal` date NOT NULL,
+                  `alamat` varchar(100) NOT NULL,
+                  `kelas` tinyint(4) NOT NULL,
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="snack">
+                CREATE TABLE `snack` (
+                  `id` int(11) NOT NULL AUTO_INCREMENT,
+                  `id_siswa` smallint(6) NOT NULL,
+                  `tanggal` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+                  `time` date NOT NULL,
+                  `waktu` date NOT NULL,
+                  `nominal` varchar(12) NOT NULL,
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="spp">
+                CREATE TABLE `spp` (
+                  `id` int(11) NOT NULL AUTO_INCREMENT,
+                  `id_siswa` smallint(6) NOT NULL,
+                  `time` date NOT NULL,
+                  `bulan` varchar(20) NOT NULL,
+                  `nominal` varchar(12) NOT NULL,
+                  `tanggal` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="tanggal">
+                CREATE TABLE `tanggal` (
+                  `id` int(11) NOT NULL AUTO_INCREMENT,
+                  `tgl` date NOT NULL,
+                  `Keterangan` varchar(50) NOT NULL,
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="temp">
+                CREATE TABLE `temp` (
+                  `id` int(11) NOT NULL AUTO_INCREMENT,
+                  `name` varchar(100) NOT NULL,
+                  `nis` varchar(15) NOT NULL,
+                  `tempat` varchar(50) NOT NULL,
+                  `tanggal` date NOT NULL,
+                  `alamat` varchar(100) NOT NULL,
+                  `wali` varchar(100) NOT NULL,
+                  `sex` enum('Pria','Wanita') NOT NULL,
+                  `status` enum('Non-Aktif','Aktif') NOT NULL,
+                  `kelas` tinyint(4) NOT NULL,
+                  `bayar` tinyint(4) NOT NULL,
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="ujian">
+                CREATE TABLE `ujian` (
+                  `id` int(11) NOT NULL AUTO_INCREMENT,
+                  `id_siswa` smallint(6) NOT NULL,
+                  `nominal` varchar(15) NOT NULL,
+                  `periode` varchar(20) NOT NULL,
+                  `time` date NOT NULL,
+                  `tanggal` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="users">
+                CREATE TABLE `users` (
+                  `id` int(11) NOT NULL AUTO_INCREMENT,
+                  `email` varchar(50) NOT NULL,
+                  `password` varchar(255) NOT NULL,
+                  `name` varchar(100) NOT NULL,
+                  `role` int(11) NOT NULL,
+                  `active` enum('1','0') NOT NULL,
+                  `gambar` varchar(128) NOT NULL,
+                  `created_on` timestamp NOT NULL DEFAULT current_timestamp(),
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+            </pma:table>
+        </pma:database>
+    </pma:structure_schemas>
+
+    <!--
+    - Database: 'si_keuangan'
+    -->
+    <database name="si_keuangan">
+        <!-- Table catering -->
+        <table name="catering">
+            <column name="id">1</column>
+            <column name="id_siswa">3</column>
+            <column name="nominal">15000</column>
+            <column name="tanggal">2019-12-18 17:11:30</column>
+            <column name="waktu">2019-11-08</column>
+            <column name="time">2019-11-17</column>
+        </table>
+        <table name="catering">
+            <column name="id">2</column>
+            <column name="id_siswa">2</column>
+            <column name="nominal">15000</column>
+            <column name="tanggal">2019-11-17 03:48:15</column>
+            <column name="waktu">2019-11-09</column>
+            <column name="time">2019-11-17</column>
+        </table>
+        <table name="catering">
+            <column name="id">3</column>
+            <column name="id_siswa">2</column>
+            <column name="nominal">15000</column>
+            <column name="tanggal">2019-11-17 03:48:15</column>
+            <column name="waktu">2019-11-11</column>
+            <column name="time">2019-11-17</column>
+        </table>
+        <table name="catering">
+            <column name="id">4</column>
+            <column name="id_siswa">9</column>
+            <column name="nominal">15000</column>
+            <column name="tanggal">2019-12-04 14:55:13</column>
+            <column name="waktu">2019-12-04</column>
+            <column name="time">2019-12-04</column>
+        </table>
+        <table name="catering">
+            <column name="id">5</column>
+            <column name="id_siswa">9</column>
+            <column name="nominal">15000</column>
+            <column name="tanggal">2019-12-04 14:55:13</column>
+            <column name="waktu">2019-12-05</column>
+            <column name="time">2019-12-04</column>
+        </table>
+        <table name="catering">
+            <column name="id">6</column>
+            <column name="id_siswa">9</column>
+            <column name="nominal">0</column>
+            <column name="tanggal">2019-12-18 17:40:36</column>
+            <column name="waktu">2019-12-06</column>
+            <column name="time">2019-12-04</column>
+        </table>
+        <table name="catering">
+            <column name="id">7</column>
+            <column name="id_siswa">9</column>
+            <column name="nominal">15000</column>
+            <column name="tanggal">2019-12-04 14:55:13</column>
+            <column name="waktu">2019-12-07</column>
+            <column name="time">2019-12-04</column>
+        </table>
+        <table name="catering">
+            <column name="id">9</column>
+            <column name="id_siswa">9</column>
+            <column name="nominal">15000</column>
+            <column name="tanggal">2019-12-04 15:04:39</column>
+            <column name="waktu">2019-12-27</column>
+            <column name="time">2019-12-04</column>
+        </table>
+        <table name="catering">
+            <column name="id">10</column>
+            <column name="id_siswa">9</column>
+            <column name="nominal">15000</column>
+            <column name="tanggal">2019-12-04 15:04:39</column>
+            <column name="waktu">2019-12-28</column>
+            <column name="time">2019-12-04</column>
+        </table>
+        <table name="catering">
+            <column name="id">11</column>
+            <column name="id_siswa">9</column>
+            <column name="nominal">15000</column>
+            <column name="tanggal">2019-12-04 15:04:39</column>
+            <column name="waktu">2019-12-30</column>
+            <column name="time">2019-12-04</column>
+        </table>
+        <table name="catering">
+            <column name="id">12</column>
+            <column name="id_siswa">8</column>
+            <column name="nominal">15000</column>
+            <column name="tanggal">2019-12-04 15:07:48</column>
+            <column name="waktu">2019-12-12</column>
+            <column name="time">2019-12-04</column>
+        </table>
+        <table name="catering">
+            <column name="id">13</column>
+            <column name="id_siswa">8</column>
+            <column name="nominal">15000</column>
+            <column name="tanggal">2019-12-04 15:07:48</column>
+            <column name="waktu">2019-12-13</column>
+            <column name="time">2019-12-04</column>
+        </table>
+        <table name="catering">
+            <column name="id">14</column>
+            <column name="id_siswa">8</column>
+            <column name="nominal">15000</column>
+            <column name="tanggal">2019-12-04 15:07:48</column>
+            <column name="waktu">2019-12-14</column>
+            <column name="time">2019-12-04</column>
+        </table>
+        <table name="catering">
+            <column name="id">15</column>
+            <column name="id_siswa">8</column>
+            <column name="nominal">15000</column>
+            <column name="tanggal">2019-12-04 15:08:51</column>
+            <column name="waktu">2019-12-26</column>
+            <column name="time">2019-12-04</column>
+        </table>
+        <table name="catering">
+            <column name="id">16</column>
+            <column name="id_siswa">8</column>
+            <column name="nominal">15000</column>
+            <column name="tanggal">2019-12-04 15:08:51</column>
+            <column name="waktu">2019-12-30</column>
+            <column name="time">2019-12-04</column>
+        </table>
+        <table name="catering">
+            <column name="id">17</column>
+            <column name="id_siswa">8</column>
+            <column name="nominal">0</column>
+            <column name="tanggal">2019-12-18 17:25:52</column>
+            <column name="waktu">2019-12-31</column>
+            <column name="time">2019-12-04</column>
+        </table>
+        <table name="catering">
+            <column name="id">18</column>
+            <column name="id_siswa">8</column>
+            <column name="nominal">15000</column>
+            <column name="tanggal">2019-12-18 16:15:55</column>
+            <column name="waktu">2019-12-19</column>
+            <column name="time">2019-12-18</column>
+        </table>
+        <table name="catering">
+            <column name="id">19</column>
+            <column name="id_siswa">8</column>
+            <column name="nominal">15000</column>
+            <column name="tanggal">2019-12-18 16:15:55</column>
+            <column name="waktu">2019-12-23</column>
+            <column name="time">2019-12-18</column>
+        </table>
+        <table name="catering">
+            <column name="id">20</column>
+            <column name="id_siswa">8</column>
+            <column name="nominal">15000</column>
+            <column name="tanggal">2019-12-18 16:15:55</column>
+            <column name="waktu">2019-12-24</column>
+            <column name="time">2019-12-18</column>
+        </table>
+        <table name="catering">
+            <column name="id">21</column>
+            <column name="id_siswa">8</column>
+            <column name="nominal">15000</column>
+            <column name="tanggal">2019-12-18 16:15:55</column>
+            <column name="waktu">2019-12-25</column>
+            <column name="time">2019-12-18</column>
+        </table>
+        <table name="catering">
+            <column name="id">22</column>
+            <column name="id_siswa">8</column>
+            <column name="nominal">15000</column>
+            <column name="tanggal">2019-12-18 16:15:55</column>
+            <column name="waktu">2020-01-01</column>
+            <column name="time">2019-12-18</column>
+        </table>
+        <table name="catering">
+            <column name="id">23</column>
+            <column name="id_siswa">8</column>
+            <column name="nominal">15000</column>
+            <column name="tanggal">2019-12-18 16:15:55</column>
+            <column name="waktu">2020-01-02</column>
+            <column name="time">2019-12-18</column>
+        </table>
+        <table name="catering">
+            <column name="id">24</column>
+            <column name="id_siswa">8</column>
+            <column name="nominal">15000</column>
+            <column name="tanggal">2019-12-18 16:15:55</column>
+            <column name="waktu">2020-01-06</column>
+            <column name="time">2019-12-18</column>
+        </table>
+        <table name="catering">
+            <column name="id">25</column>
+            <column name="id_siswa">8</column>
+            <column name="nominal">15000</column>
+            <column name="tanggal">2019-12-18 16:15:55</column>
+            <column name="waktu">2020-01-07</column>
+            <column name="time">2019-12-18</column>
+        </table>
+        <table name="catering">
+            <column name="id">26</column>
+            <column name="id_siswa">8</column>
+            <column name="nominal">15000</column>
+            <column name="tanggal">2019-12-18 16:15:55</column>
+            <column name="waktu">2020-01-08</column>
+            <column name="time">2019-12-18</column>
+        </table>
+        <table name="catering">
+            <column name="id">27</column>
+            <column name="id_siswa">8</column>
+            <column name="nominal">15000</column>
+            <column name="tanggal">2019-12-18 16:15:55</column>
+            <column name="waktu">2020-01-09</column>
+            <column name="time">2019-12-18</column>
+        </table>
+        <table name="catering">
+            <column name="id">28</column>
+            <column name="id_siswa">12</column>
+            <column name="nominal">0</column>
+            <column name="tanggal">2022-09-19 22:22:01</column>
+            <column name="waktu">2022-09-19</column>
+            <column name="time">2022-09-19</column>
+        </table>
+        <table name="catering">
+            <column name="id">29</column>
+            <column name="id_siswa">12</column>
+            <column name="nominal">15000</column>
+            <column name="tanggal">2022-09-19 22:16:24</column>
+            <column name="waktu">2022-09-20</column>
+            <column name="time">2022-09-19</column>
+        </table>
+        <!-- Table gaji -->
+        <table name="gaji">
+            <column name="id">2</column>
+            <column name="id_guru">3</column>
+            <column name="periode">Februari-2020</column>
+            <column name="jam">16</column>
+            <column name="nominal">40000</column>
+            <column name="time">2020-02-25</column>
+            <column name="tanggal">2020-02-25 12:16:50</column>
+        </table>
+        <table name="gaji">
+            <column name="id">3</column>
+            <column name="id_guru">3</column>
+            <column name="periode">April-2022</column>
+            <column name="jam">10</column>
+            <column name="nominal">40000</column>
+            <column name="time">2022-09-05</column>
+            <column name="tanggal">2022-09-05 17:47:02</column>
+        </table>
+        <table name="gaji">
+            <column name="id">4</column>
+            <column name="id_guru">4</column>
+            <column name="periode">September-2022</column>
+            <column name="jam">50</column>
+            <column name="nominal">40000</column>
+            <column name="time">2022-09-18</column>
+            <column name="tanggal">2022-09-18 16:28:51</column>
+        </table>
+        <table name="gaji">
+            <column name="id">5</column>
+            <column name="id_guru">3</column>
+            <column name="periode">September-2022</column>
+            <column name="jam">10</column>
+            <column name="nominal">40000</column>
+            <column name="time">2022-09-19</column>
+            <column name="tanggal">2022-09-19 22:25:58</column>
+        </table>
+        <!-- Table guru -->
+        <table name="guru">
+            <column name="id">3</column>
+            <column name="name">Baharuddin</column>
+            <column name="sex">Pria</column>
+            <column name="nip">1201200221</column>
+            <column name="bidang">Matimatika</column>
+            <column name="alamat">Jln Kenangan</column>
+            <column name="status">Aktif</column>
+            <column name="number">0853-8833-2311</column>
+        </table>
+        <table name="guru">
+            <column name="id">4</column>
+            <column name="name">Rismasuci</column>
+            <column name="sex">Wanita</column>
+            <column name="nip">02130001231</column>
+            <column name="bidang">Bahasa Indonesia</column>
+            <column name="alamat">Jl. Kelapa dua</column>
+            <column name="status">Aktif</column>
+            <column name="number">0852-9992-1212</column>
+        </table>
+        <!-- Table kelas -->
+        <table name="kelas">
+            <column name="id">5</column>
+            <column name="nama">Kelas 1A</column>
+            <column name="wali">Baharuddin</column>
+            <column name="keterangan"></column>
+        </table>
+        <table name="kelas">
+            <column name="id">6</column>
+            <column name="nama">Kelas 1B</column>
+            <column name="wali">Rismasuci</column>
+            <column name="keterangan"></column>
+        </table>
+        <!-- Table lainnya -->
+        <table name="lainnya">
+            <column name="id">6</column>
+            <column name="sekarang">200225</column>
+            <column name="time">2020-02-25</column>
+            <column name="jenis"></column>
+            <column name="keterangan">Saldo Awal Sekolah</column>
+            <column name="nominal">25000000</column>
+            <column name="tanggal">2020-02-25 12:21:15</column>
+        </table>
+        <table name="lainnya">
+            <column name="id">7</column>
+            <column name="sekarang">220905</column>
+            <column name="time">2022-09-05</column>
+            <column name="jenis"></column>
+            <column name="keterangan">BOS</column>
+            <column name="nominal">10000000</column>
+            <column name="tanggal">2022-09-05 17:50:54</column>
+        </table>
+        <table name="lainnya">
+            <column name="id">8</column>
+            <column name="sekarang">220919</column>
+            <column name="time">2022-09-19</column>
+            <column name="jenis"></column>
+            <column name="keterangan">bos</column>
+            <column name="nominal">50000</column>
+            <column name="tanggal">2022-09-19 21:03:52</column>
+        </table>
+        <table name="lainnya">
+            <column name="id">9</column>
+            <column name="sekarang">220919</column>
+            <column name="time">2022-09-19</column>
+            <column name="jenis"></column>
+            <column name="keterangan">yu</column>
+            <column name="nominal">500</column>
+            <column name="tanggal">2022-09-19 21:19:19</column>
+        </table>
+        <table name="lainnya">
+            <column name="id">10</column>
+            <column name="sekarang">220919</column>
+            <column name="time">2022-09-19</column>
+            <column name="jenis"></column>
+            <column name="keterangan">jtehe</column>
+            <column name="nominal">500000</column>
+            <column name="tanggal">2022-09-19 21:20:26</column>
+        </table>
+        <table name="lainnya">
+            <column name="id">11</column>
+            <column name="sekarang">220919</column>
+            <column name="time">2022-09-19</column>
+            <column name="jenis"></column>
+            <column name="keterangan">gwef</column>
+            <column name="nominal">99</column>
+            <column name="tanggal">2022-09-19 21:21:00</column>
+        </table>
+        <table name="lainnya">
+            <column name="id">12</column>
+            <column name="sekarang">220919</column>
+            <column name="time">2022-09-19</column>
+            <column name="jenis"></column>
+            <column name="keterangan">dwq</column>
+            <column name="nominal">75000</column>
+            <column name="tanggal">2022-09-19 21:24:09</column>
+        </table>
+        <table name="lainnya">
+            <column name="id">13</column>
+            <column name="sekarang">220919</column>
+            <column name="time">2022-09-19</column>
+            <column name="jenis">Dana BOS</column>
+            <column name="keterangan">terima bos</column>
+            <column name="nominal">800000</column>
+            <column name="tanggal">2022-09-19 21:26:17</column>
+        </table>
+        <table name="lainnya">
+            <column name="id">15</column>
+            <column name="sekarang">220920</column>
+            <column name="time">2022-09-20</column>
+            <column name="jenis">Dana BOP</column>
+            <column name="keterangan">feqfwq</column>
+            <column name="nominal">500000</column>
+            <column name="tanggal">2022-09-20 00:50:48</column>
+        </table>
+        <table name="lainnya">
+            <column name="id">16</column>
+            <column name="sekarang">220921</column>
+            <column name="time">2022-09-21</column>
+            <column name="jenis">Sumbangan</column>
+            <column name="keterangan">ugtkvv</column>
+            <column name="nominal">5000</column>
+            <column name="tanggal">2022-09-21 01:23:22</column>
+        </table>
+        <table name="lainnya">
+            <column name="id">17</column>
+            <column name="sekarang">220921</column>
+            <column name="time">2022-09-21</column>
+            <column name="jenis">Pinjaman</column>
+            <column name="keterangan">injammmmm</column>
+            <column name="nominal">90000</column>
+            <column name="tanggal">2022-09-21 01:24:58</column>
+        </table>
+        <table name="lainnya">
+            <column name="id">18</column>
+            <column name="sekarang">220921</column>
+            <column name="time">2022-09-21</column>
+            <column name="jenis">Dana BOS</column>
+            <column name="keterangan">jhreewrrrrrrrrr</column>
+            <column name="nominal">50000</column>
+            <column name="tanggal">2022-09-21 01:26:42</column>
+        </table>
+        <!-- Table laporan -->
+        <table name="laporan">
+            <column name="id">13</column>
+            <column name="saldo_awal">0</column>
+            <column name="kas_masuk">25000000</column>
+            <column name="kas_keluar">0</column>
+            <column name="tanggal">2020-02-25</column>
+        </table>
+        <table name="laporan">
+            <column name="id">14</column>
+            <column name="saldo_awal">25000000</column>
+            <column name="kas_masuk">0</column>
+            <column name="kas_keluar">0</column>
+            <column name="tanggal">2022-09-04</column>
+        </table>
+        <table name="laporan">
+            <column name="id">15</column>
+            <column name="saldo_awal">25000000</column>
+            <column name="kas_masuk">10070000</column>
+            <column name="kas_keluar">400000</column>
+            <column name="tanggal">2022-09-05</column>
+        </table>
+        <table name="laporan">
+            <column name="id">16</column>
+            <column name="saldo_awal">34670000</column>
+            <column name="kas_masuk">0</column>
+            <column name="kas_keluar">2000000</column>
+            <column name="tanggal">2022-09-18</column>
+        </table>
+        <table name="laporan">
+            <column name="id">17</column>
+            <column name="saldo_awal">32670000</column>
+            <column name="kas_masuk">1455599</column>
+            <column name="kas_keluar">915000</column>
+            <column name="tanggal">2022-09-19</column>
+        </table>
+        <table name="laporan">
+            <column name="id">18</column>
+            <column name="saldo_awal">33210599</column>
+            <column name="kas_masuk">500000</column>
+            <column name="kas_keluar">0</column>
+            <column name="tanggal">2022-09-20</column>
+        </table>
+        <table name="laporan">
+            <column name="id">19</column>
+            <column name="saldo_awal">33710599</column>
+            <column name="kas_masuk">145000</column>
+            <column name="kas_keluar">0</column>
+            <column name="tanggal">2022-09-21</column>
+        </table>
+        <!-- Table pembayaran -->
+        <table name="pembayaran">
+            <column name="id">1</column>
+            <column name="nama">Uang SPP</column>
+            <column name="nominal">70000</column>
+            <column name="tipe">KM</column>
+            <column name="kode">KM-0001</column>
+        </table>
+        <table name="pembayaran">
+            <column name="id">2</column>
+            <column name="nama">Uang Ujian</column>
+            <column name="nominal">50000</column>
+            <column name="tipe">KM</column>
+            <column name="kode">KM-0002</column>
+        </table>
+        <table name="pembayaran">
+            <column name="id">3</column>
+            <column name="nama">Uang Snack</column>
+            <column name="nominal">5000</column>
+            <column name="tipe">KM</column>
+            <column name="kode">KM-0003</column>
+        </table>
+        <table name="pembayaran">
+            <column name="id">4</column>
+            <column name="nama">Uang Catering</column>
+            <column name="nominal">15000</column>
+            <column name="tipe">KM</column>
+            <column name="kode">KM-0004</column>
+        </table>
+        <table name="pembayaran">
+            <column name="id">5</column>
+            <column name="nama">Uang Pendaftaran</column>
+            <column name="nominal">200000</column>
+            <column name="tipe">KM</column>
+            <column name="kode">KM-0005</column>
+        </table>
+        <table name="pembayaran">
+            <column name="id">6</column>
+            <column name="nama">Pembayaran Gaji</column>
+            <column name="nominal">40000</column>
+            <column name="tipe">KK</column>
+            <column name="kode">KK-0001</column>
+        </table>
+        <!-- Table pendaftaran -->
+        <!-- Table pengeluaran -->
+        <table name="pengeluaran">
+            <column name="id">5</column>
+            <column name="nominal">500000</column>
+            <column name="sekarang">220919</column>
+            <column name="time">2022-09-19</column>
+            <column name="keterangan">inventaris</column>
+            <column name="tanggal">2022-09-19 23:55:04</column>
+        </table>
+        <!-- Table siswa -->
+        <table name="siswa">
+            <column name="id">10</column>
+            <column name="name">Suci Permata Sari</column>
+            <column name="nis">123313134223</column>
+            <column name="sex">Wanita</column>
+            <column name="status">Aktif</column>
+            <column name="wali">Musa Harun</column>
+            <column name="tempat">Kampar</column>
+            <column name="tanggal">2020-02-17</column>
+            <column name="alamat">Jl. Simpang Lima</column>
+            <column name="kelas">6</column>
+        </table>
+        <table name="siswa">
+            <column name="id">11</column>
+            <column name="name">Ahmad Dhairobbi</column>
+            <column name="nis">1231314331</column>
+            <column name="sex">Pria</column>
+            <column name="status">Aktif</column>
+            <column name="wali">Darmijan</column>
+            <column name="tempat">Batu Guntung</column>
+            <column name="tanggal">2002-07-25</column>
+            <column name="alamat">Jln Kebakyoran Baru</column>
+            <column name="kelas">5</column>
+        </table>
+        <table name="siswa">
+            <column name="id">12</column>
+            <column name="name">Andrew Benedictus Jamesie</column>
+            <column name="nis">01234567</column>
+            <column name="sex">Pria</column>
+            <column name="status">Cuti</column>
+            <column name="wali">Darmijan</column>
+            <column name="tempat">Medan</column>
+            <column name="tanggal">2003-01-20</column>
+            <column name="alamat">Jl. Dr. Mansyur</column>
+            <column name="kelas">5</column>
+        </table>
+        <table name="siswa">
+            <column name="id">13</column>
+            <column name="name">Ucok Bambang</column>
+            <column name="nis">76543210</column>
+            <column name="sex">Pria</column>
+            <column name="status">Berhenti</column>
+            <column name="wali">Darmijan</column>
+            <column name="tempat">Medan</column>
+            <column name="tanggal">2001-01-01</column>
+            <column name="alamat">Jl. Bambang</column>
+            <column name="kelas">5</column>
+        </table>
+        <!-- Table snack -->
+        <table name="snack">
+            <column name="id">15</column>
+            <column name="id_siswa">8</column>
+            <column name="tanggal">2019-11-17 14:08:52</column>
+            <column name="time">2019-11-17</column>
+            <column name="waktu">2019-11-18</column>
+            <column name="nominal">5000</column>
+        </table>
+        <table name="snack">
+            <column name="id">16</column>
+            <column name="id_siswa">8</column>
+            <column name="tanggal">2019-11-17 14:08:52</column>
+            <column name="time">2019-11-17</column>
+            <column name="waktu">2019-11-19</column>
+            <column name="nominal">5000</column>
+        </table>
+        <table name="snack">
+            <column name="id">17</column>
+            <column name="id_siswa">8</column>
+            <column name="tanggal">2019-11-17 14:08:52</column>
+            <column name="time">2019-11-17</column>
+            <column name="waktu">2019-11-20</column>
+            <column name="nominal">5000</column>
+        </table>
+        <table name="snack">
+            <column name="id">18</column>
+            <column name="id_siswa">8</column>
+            <column name="tanggal">2019-12-18 18:57:24</column>
+            <column name="time">2019-11-17</column>
+            <column name="waktu">2019-11-21</column>
+            <column name="nominal">0</column>
+        </table>
+        <table name="snack">
+            <column name="id">19</column>
+            <column name="id_siswa">8</column>
+            <column name="tanggal">2019-11-17 14:08:52</column>
+            <column name="time">2019-11-17</column>
+            <column name="waktu">2019-11-22</column>
+            <column name="nominal">5000</column>
+        </table>
+        <table name="snack">
+            <column name="id">20</column>
+            <column name="id_siswa">8</column>
+            <column name="tanggal">2019-11-17 14:08:52</column>
+            <column name="time">2019-11-17</column>
+            <column name="waktu">2019-11-23</column>
+            <column name="nominal">5000</column>
+        </table>
+        <table name="snack">
+            <column name="id">21</column>
+            <column name="id_siswa">8</column>
+            <column name="tanggal">2019-12-18 18:01:43</column>
+            <column name="time">2019-11-17</column>
+            <column name="waktu">2019-11-25</column>
+            <column name="nominal">0</column>
+        </table>
+        <table name="snack">
+            <column name="id">22</column>
+            <column name="id_siswa">10</column>
+            <column name="tanggal">2020-02-25 12:11:36</column>
+            <column name="time">2020-02-25</column>
+            <column name="waktu">2020-02-12</column>
+            <column name="nominal">5000</column>
+        </table>
+        <table name="snack">
+            <column name="id">23</column>
+            <column name="id_siswa">10</column>
+            <column name="tanggal">2020-02-25 12:11:36</column>
+            <column name="time">2020-02-25</column>
+            <column name="waktu">2020-02-13</column>
+            <column name="nominal">5000</column>
+        </table>
+        <!-- Table spp -->
+        <table name="spp">
+            <column name="id">3</column>
+            <column name="id_siswa">9</column>
+            <column name="time">2019-11-17</column>
+            <column name="bulan">Januari-2019</column>
+            <column name="nominal">70000</column>
+            <column name="tanggal">2019-11-17 14:20:18</column>
+        </table>
+        <table name="spp">
+            <column name="id">4</column>
+            <column name="id_siswa">10</column>
+            <column name="time">2020-02-25</column>
+            <column name="bulan">Januari-2020</column>
+            <column name="nominal">70000</column>
+            <column name="tanggal">2020-02-25 12:09:48</column>
+        </table>
+        <table name="spp">
+            <column name="id">5</column>
+            <column name="id_siswa">11</column>
+            <column name="time">2022-09-05</column>
+            <column name="bulan">April-2022</column>
+            <column name="nominal">70000</column>
+            <column name="tanggal">2022-09-05 17:49:49</column>
+        </table>
+        <!-- Table tanggal -->
+        <table name="tanggal">
+            <column name="id">3</column>
+            <column name="tgl">2020-06-01</column>
+            <column name="Keterangan">Hari Pancasila</column>
+        </table>
+        <table name="tanggal">
+            <column name="id">4</column>
+            <column name="tgl">2020-05-22</column>
+            <column name="Keterangan">Hari Buruh</column>
+        </table>
+        <!-- Table temp -->
+        <table name="temp">
+            <column name="id">3</column>
+            <column name="name">Ahmad Safawi</column>
+            <column name="nis">1333</column>
+            <column name="tempat">Rambah Samo</column>
+            <column name="tanggal">2000-06-13</column>
+            <column name="alamat">Jl. Simpang Mangga</column>
+            <column name="wali">Bahar</column>
+            <column name="sex">Pria</column>
+            <column name="status">Non-Aktif</column>
+            <column name="kelas">0</column>
+            <column name="bayar">0</column>
+        </table>
+        <!-- Table ujian -->
+        <!-- Table users -->
+        <table name="users">
+            <column name="id">1</column>
+            <column name="email">harumsentosa@gmail.com</column>
+            <column name="password">$2y$10$dFdQaba34BplJRnmCv54/uhoFLU0wlXCY4lRG/EG9FpX9fN1kzjq.</column>
+            <column name="name">Harum Sentosa Baru</column>
+            <column name="role">1</column>
+            <column name="active">1</column>
+            <column name="gambar">logo_harum_sentosa_baru.png</column>
+            <column name="created_on">2022-09-18 17:03:50</column>
+        </table>
+        <table name="users">
+            <column name="id">3</column>
+            <column name="email">admin123@gmail.com</column>
+            <column name="password">$2y$10$KmTNhCy0tO31/E2nF4g36Oh8g2RMxPTcDNdWZWUwxOpMHPuvTw4AC</column>
+            <column name="name">admin123</column>
+            <column name="role">2</column>
+            <column name="active">1</column>
+            <column name="gambar">logo_harum_sentosa_baru.png</column>
+            <column name="created_on">0000-00-00 00:00:00</column>
+        </table>
+    </database>
+</pma_xml_export>
