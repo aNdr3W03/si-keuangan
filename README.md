@@ -1,4 +1,9 @@
 # sim-sekolah
+
+akskajskajsknaksn
+aknskaskajsk
+asnakskas
+
 Sistem Informasi Manajemen Keuangan Sekolah
 
 <p>Sistem informasi manajemen keuangan sekolah ini merupakan sistem yang dipakai untuk mengontrol keuangan sekolah dengan custom sesuia dengan permintaan sekolah sebelumnya
