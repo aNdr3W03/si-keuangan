@@ -19,6 +19,7 @@
                       <th style="width: 10px;">No</th>
                       <th>Tanggal</th>
                       <th>Nominal</th>
+                      <th>Jenis Pemasukan</th>
                       <th>Keterangan</th>
 			            </tr>
 		            </thead>
@@ -92,6 +93,7 @@
                 },
                 {"data": "Tgl"},
                 {"data": "nominal",render: $.fn.dataTable.render.number('.',',','')},
+                {"data": "jenis"},
                 {"data": "keterangan"}
             ],
             order: [[1, 'asc']],
