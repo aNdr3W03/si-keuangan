@@ -11,7 +11,7 @@ class M_Pengeluaran  extends CI_Model {
 	}
 
 	function getDetailData($detail =''){
-		$this->datatables->select("id,DATE_FORMAT(s.tanggal,'%d-%m-%Y - %H:%m:%s WIB') AS Tgl,nominal,keterangan");
+		$this->datatables->select("id,DATE_FORMAT(s.tanggal,'%d-%m-%Y - %H:%m:%s WIB') AS Tgl,nominal,jenis,keterangan");
 		$this->datatables->from('pengeluaran as s');
 		$this->datatables->where('sekarang',$detail);
 		return $this->datatables->generate();

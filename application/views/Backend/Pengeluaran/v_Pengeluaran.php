@@ -44,6 +44,16 @@
             		<div><input type="text" required="" placeholder="Nominal Pemasukan" onkeypress="return Angka(this)" autocomplete="off" name="nominal" class="form-control"></div>
             	</div>
                 <div class="form-group">
+                    <label class="control-label">Jenis Pengeluaran</label>
+                    <select name="jenis" required="" data-placeholder="--Pilih--" class="form-control">
+                        <option value="">--Pilih--</option>
+                        <option value="ATK">ATK</option>
+                        <option value="Operasional">Operasional</option>
+                        <option value="Belanja Aset (Inventaris)">Belanja Aset (Inventaris)</option>
+                        <option value="Lainnya">Lainnya</option>
+                    </select>
+                </div>
+                <div class="form-group">
                     <label class="control-label"> Keterangan</label>
                     <div><input type="text" required="" placeholder="Keterangan" autocomplete="off" name="keterangan" class="form-control"></div>
                 </div>

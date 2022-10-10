@@ -54,18 +54,19 @@ class Pengeluaran extends CI_Controller {
 	}
 
 	function Simpan(){
+		$total = filter_string($this->input->post('nominal',TRUE));
 
-    		$total = filter_string($this->input->post('nominal',TRUE));
-    		$insert = array(
-	                    'nominal'	=> $total,
-	                    'sekarang'	=> sekarang(),
-	                    'time'	   => waktu(),
-	                    'keterangan'	=> filter_string($this->input->post('keterangan',TRUE))
-	                );
+		$insert = array(
+			'nominal'	 => $total,
+			'sekarang'	 => sekarang(),
+			'time'	     => waktu(),
+			'jenis'      => filter_string($this->input->post('jenis',TRUE)),
+			'keterangan' => filter_string($this->input->post('keterangan',TRUE))
+		);
 
-	        $insert = $this->M_General->insert($this->table,$insert);
-	           $this->M_General->update_kas('kas_keluar',$total);
-	        $data['status'] = TRUE;
+		$insert = $this->M_General->insert($this->table,$insert);
+		$this->M_General->update_kas('kas_keluar',$total);
+		$data['status'] = TRUE;
 
         $this->output->set_content_type('application/json')->set_output(json_encode($data));
 	}
