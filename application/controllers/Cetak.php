@@ -43,8 +43,8 @@ class Cetak extends CI_Controller{
        // head
        
        $pdf->Cell(3,5,'',0,1);
-       $pdf->Image(base_url().'/assets/dist/img/logo_harum_sentosa_baru.png', 177, 10,29);
-       $pdf->Image(base_url().'/assets/dist/img/dik.png', 2, 10,33);
+       $pdf->Image(base_url().'/assets/dist/img/logo_harum_sentosa_baru.png', 180, 12, 28);
+       $pdf->Image(base_url().'/assets/dist/img/tut_wuri_handayani.png', 3, 12, 28);
        $pdf->Cell(3,-5,'',0,1);
        $pdf->SetFont('TIMES','B',14);
        $pdf->Cell(189, 5, 'MAJELIS PENDIDIKAN DASAR DAN MENENGAH', 0, 1, 'C');
@@ -52,8 +52,8 @@ class Cetak extends CI_Controller{
        $pdf->SetFont('TIMES','B',16);
        $pdf->Cell(192, 7, 'YAYASAN HARUM SENTOSA BARU', 0, 1, 'C');
        $pdf->SetFont('TIMES','',12);
-       $pdf->Cell(189, 5, 'Jalan Laksana No. 23, Kec. Perbaungan, Kab. Serdang Bedagai, Sumatera Utara, 20986', 0, 1, 'C');
-       $pdf->Cell(189, 5, 'Telp. (0821) 2268 0570, Fax(022)6645951', 0, 1, 'C');
+       $pdf->Cell(189, 5, 'Jl. Laksana No. 23, Kec. Perbaungan, Kab. Serdang Bedagai, Sumatera Utara, 20986', 0, 1, 'C');
+       $pdf->Cell(189, 5, 'Telp. (0821) 2268 0570, Fax (022) 1234567', 0, 1, 'C');
        $pdf->Cell(189, 5, 'E-mail : harumsentosabaru@gmail.com', 0, 1, 'C');
        $pdf->SetLineWidth(1);
        $pdf->Line(9, 46, 203, 46);
@@ -141,7 +141,7 @@ foreach($data['pengeluaran'] as $r){
        $pdf->SetFont('TIMES','',12);
        $pdf->Cell(125, 35, '', 0, 1);
        $pdf->Cell(125, 35, '', 0, 0);
-       $pdf->Cell(55, 5, 'Kampa, '.  tanggal(waktu(),'bulan'), 0, 1);
+       $pdf->Cell(55, 5, 'Perbaungan, '.  tanggal(waktu(),'bulan'), 0, 1);
        $pdf->Cell(125, 5, '', 0, 0);
        $pdf->Cell(35, 5, 'Kepala Sekolah,', 0, 1);
        $pdf->Cell(125, 10, '', 0, 0);
@@ -165,18 +165,18 @@ foreach($data['pengeluaran'] as $r){
        // head
        
        $pdf->Cell(3,5,'',0,1);
-       $pdf->Image(base_url().'/assets/dist/img/j.png', 177, 10,29);
-       $pdf->Image(base_url().'/assets/dist/img/dik.png', 2, 10,33);
+       $pdf->Image(base_url().'/assets/dist/img/logo_harum_sentosa_baru.png', 180, 12, 28);
+       $pdf->Image(base_url().'/assets/dist/img/tut_wuri_handayani.png', 3, 12, 28);
        $pdf->Cell(3,-5,'',0,1);
        $pdf->SetFont('TIMES','B',14);
        $pdf->Cell(189, 5, 'MAJELIS PENDIDIKAN DASAR DAN MENENGAH', 0, 1, 'C');
        $pdf->Cell(189, 7, 'PIMPINAN CABANG MUHAMMADIYAH KAMPAR', 0, 1, 'C');
        $pdf->SetFont('TIMES','B',16);
-       $pdf->Cell(192, 7, 'SD MUHAMMADIYAH KAMPA I FULL DAY SCHOOL', 0, 1, 'C');
+       $pdf->Cell(192, 7, 'YAYASAN HARUM SENTOSA BARU', 0, 1, 'C');
        $pdf->SetFont('TIMES','',12);
-       $pdf->Cell(189, 5, 'Jalan Melur Pekanbaru 40513, Riau', 0, 1, 'C');
-       $pdf->Cell(189, 5, 'Telp.(022) 6645951,Fax(022)6645951', 0, 1, 'C');
-       $pdf->Cell(189, 5, 'E-mail : sd.muhammadiyah.kampa1@gmail.com', 0, 1, 'C');
+       $pdf->Cell(189, 5, 'Jl. Laksana No. 23, Kec. Perbaungan, Kab. Serdang Bedagai, Sumatera Utara, 20986', 0, 1, 'C');
+       $pdf->Cell(189, 5, 'Telp. (0821) 2268 0570, Fax (022) 1234567', 0, 1, 'C');
+       $pdf->Cell(189, 5, 'E-mail : harumsentosabaru@gmail.com', 0, 1, 'C');
        $pdf->SetLineWidth(1);
        $pdf->Line(9, 46, 203, 46);
        $pdf->SetLineWidth(0);
@@ -210,7 +210,7 @@ foreach($data['pengeluaran'] as $r){
        $pdf->SetFont('TIMES','',12);
        $pdf->Cell(125, 35, '', 0, 1);
        $pdf->Cell(125, 35, '', 0, 0);
-       $pdf->Cell(55, 5, 'Kampa, '.  tanggal(waktu(),'bulan'), 0, 1);
+       $pdf->Cell(55, 5, 'Perbaungan, '.  tanggal(waktu(),'bulan'), 0, 1);
        $pdf->Cell(125, 5, '', 0, 0);
        $pdf->Cell(35, 5, 'Kepala Sekolah,', 0, 1);
        $pdf->Cell(125, 10, '', 0, 0);
