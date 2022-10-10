@@ -5,7 +5,7 @@
 - https://www.phpmyadmin.net
 -
 - Host: 127.0.0.1
-- Generation Time: Sep 20, 2022 at 08:31 PM
+- Generation Time: Oct 10, 2022 at 02:54 PM
 - Server version: 10.4.14-MariaDB
 - PHP Version: 7.2.34
 -->
@@ -81,7 +81,7 @@
                   `kas_keluar` varchar(15) NOT NULL DEFAULT '0',
                   `tanggal` date NOT NULL,
                   PRIMARY KEY (`id`)
-                ) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
+                ) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
             </pma:table>
             <pma:table name="pembayaran">
                 CREATE TABLE `pembayaran` (
@@ -109,10 +109,11 @@
                   `nominal` varchar(12) NOT NULL,
                   `sekarang` varchar(10) NOT NULL,
                   `time` date NOT NULL,
+                  `jenis` varchar(64) NOT NULL,
                   `keterangan` text NOT NULL,
                   `tanggal` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
                   PRIMARY KEY (`id`)
-                ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+                ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
             </pma:table>
             <pma:table name="siswa">
                 CREATE TABLE `siswa` (
@@ -661,6 +662,20 @@
             <column name="kas_keluar">0</column>
             <column name="tanggal">2022-09-21</column>
         </table>
+        <table name="laporan">
+            <column name="id">20</column>
+            <column name="saldo_awal">33855599</column>
+            <column name="kas_masuk">0</column>
+            <column name="kas_keluar">0</column>
+            <column name="tanggal">2022-10-02</column>
+        </table>
+        <table name="laporan">
+            <column name="id">21</column>
+            <column name="saldo_awal">33855599</column>
+            <column name="kas_masuk">0</column>
+            <column name="kas_keluar">600000</column>
+            <column name="tanggal">2022-10-10</column>
+        </table>
         <!-- Table pembayaran -->
         <table name="pembayaran">
             <column name="id">1</column>
@@ -707,12 +722,31 @@
         <!-- Table pendaftaran -->
         <!-- Table pengeluaran -->
         <table name="pengeluaran">
-            <column name="id">5</column>
+            <column name="id">6</column>
+            <column name="nominal">50000</column>
+            <column name="sekarang">221010</column>
+            <column name="time">2022-10-10</column>
+            <column name="jenis">Operasional</column>
+            <column name="keterangan">Belanja operasional bulanan</column>
+            <column name="tanggal">2022-10-10 19:11:42</column>
+        </table>
+        <table name="pengeluaran">
+            <column name="id">7</column>
+            <column name="nominal">50000</column>
+            <column name="sekarang">221010</column>
+            <column name="time">2022-10-10</column>
+            <column name="jenis">ATK</column>
+            <column name="keterangan">Beli ATK</column>
+            <column name="tanggal">2022-10-10 19:11:45</column>
+        </table>
+        <table name="pengeluaran">
+            <column name="id">8</column>
             <column name="nominal">500000</column>
-            <column name="sekarang">220919</column>
-            <column name="time">2022-09-19</column>
-            <column name="keterangan">inventaris</column>
-            <column name="tanggal">2022-09-19 23:55:04</column>
+            <column name="sekarang">221010</column>
+            <column name="time">2022-10-10</column>
+            <column name="jenis">Belanja Aset (Inventaris)</column>
+            <column name="keterangan">Pengadaan barang meja kursi</column>
+            <column name="tanggal">2022-10-10 19:11:51</column>
         </table>
         <!-- Table siswa -->
         <table name="siswa">
