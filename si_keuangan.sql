@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 20, 2022 at 08:31 PM
+-- Generation Time: Oct 10, 2022 at 02:54 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.34
 
@@ -201,7 +201,9 @@ INSERT INTO `laporan` (`id`, `saldo_awal`, `kas_masuk`, `kas_keluar`, `tanggal`)
 (16, '34670000', '0', '2000000', '2022-09-18'),
 (17, '32670000', '1455599', '915000', '2022-09-19'),
 (18, '33210599', '500000', '0', '2022-09-20'),
-(19, '33710599', '145000', '0', '2022-09-21');
+(19, '33710599', '145000', '0', '2022-09-21'),
+(20, '33855599', '0', '0', '2022-10-02'),
+(21, '33855599', '0', '600000', '2022-10-10');
 
 -- --------------------------------------------------------
 
@@ -254,6 +256,7 @@ CREATE TABLE `pengeluaran` (
   `nominal` varchar(12) NOT NULL,
   `sekarang` varchar(10) NOT NULL,
   `time` date NOT NULL,
+  `jenis` varchar(64) NOT NULL,
   `keterangan` text NOT NULL,
   `tanggal` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -262,8 +265,10 @@ CREATE TABLE `pengeluaran` (
 -- Dumping data for table `pengeluaran`
 --
 
-INSERT INTO `pengeluaran` (`id`, `nominal`, `sekarang`, `time`, `keterangan`, `tanggal`) VALUES
-(5, '500000', '220919', '2022-09-19', 'inventaris', '2022-09-19 16:55:04');
+INSERT INTO `pengeluaran` (`id`, `nominal`, `sekarang`, `time`, `jenis`, `keterangan`, `tanggal`) VALUES
+(6, '50000', '221010', '2022-10-10', 'Operasional', 'Belanja operasional bulanan', '2022-10-10 12:11:42'),
+(7, '50000', '221010', '2022-10-10', 'ATK', 'Beli ATK', '2022-10-10 12:11:45'),
+(8, '500000', '221010', '2022-10-10', 'Belanja Aset (Inventaris)', 'Pengadaan barang meja kursi', '2022-10-10 12:11:51');
 
 -- --------------------------------------------------------
 
@@ -573,7 +578,7 @@ ALTER TABLE `lainnya`
 -- AUTO_INCREMENT for table `laporan`
 --
 ALTER TABLE `laporan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `pembayaran`
@@ -591,7 +596,7 @@ ALTER TABLE `pendaftaran`
 -- AUTO_INCREMENT for table `pengeluaran`
 --
 ALTER TABLE `pengeluaran`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `siswa`
