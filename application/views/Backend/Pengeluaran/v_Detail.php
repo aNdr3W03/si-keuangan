@@ -19,7 +19,7 @@
                       <th style="width: 10px;">No</th>
                       <th>Tanggal</th>
                       <th>Nominal</th>
-                      <th>Jenis Pemasukan</th>
+                      <th>Jenis Pengeluaran</th>
                       <th>Keterangan</th>
 			            </tr>
 		            </thead>

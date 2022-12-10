@@ -46,36 +46,36 @@ class Siswa extends CI_Controller {
 
 		$upload = $this->M_General->upload_file($this->filename);
 	
-		if ($upload['status'] == true){  
-		include APPPATH.'third_party/PHPExcel/PHPExcel.php';
-		$excelreader = new PHPExcel_Reader_Excel2007();
-		$loadexcel = $excelreader->load('excel/'.$this->filename.'.xlsx');
-		$sheet = $loadexcel->getActiveSheet()->toArray(null, true, true ,true);
-		
-		$data = array();
-		$numrow = 1;
-		foreach($sheet as $row){
-			if($numrow > 1){
-				// Kita push (add) array data ke variabel data
-				array_push($data, array(
-					'name'=>$row['A'],
-					'nis'=>$row['B'],
-					'tempat'=>$row['C'],
-					'tanggal'=>$row['D'],
-					'sex'=>$row['E'],
-					'wali'=>$row['F'],
-					'alamat'=>$row['G'],
-					'status'=>$row['H'],
-					'kelas'=>$row['I'],
-				));
-			}
+		if ($upload['status'] == true){
+			include APPPATH.'third_party/PHPExcel/PHPExcel.php';
+			$excelreader = new PHPExcel_Reader_Excel2007();
+			$loadexcel = $excelreader->load('excel/'.$this->filename.'.xlsx');
+			$sheet = $loadexcel->getActiveSheet()->toArray(null, true, true ,true);
 			
-			$numrow++;
-		}
-		$this->M_General->insert_multiple($data);
-		
-        $data['status'] = TRUE;
-        $this->M_General->delete('siswa','kelas','0');
+			$data = array();
+			$numrow = 1;
+			foreach($sheet as $row){
+				if($numrow > 1){
+					// Kita push (add) array data ke variabel data
+					array_push($data, array(
+						'name'=>$row['A'],
+						'nis'=>$row['B'],
+						'tempat'=>$row['C'],
+						'tanggal'=>$row['D'],
+						'sex'=>$row['E'],
+						'wali'=>$row['F'],
+						'alamat'=>$row['G'],
+						'status'=>$row['H'],
+						'kelas'=>$row['I'],
+					));
+				}
+				
+				$numrow++;
+			}
+			$this->M_General->insert_multiple($data);
+			
+			$data['status'] = TRUE;
+			$this->M_General->delete('siswa','kelas','0');
     	}
     	else{
     		$data['status'] = FALSE;

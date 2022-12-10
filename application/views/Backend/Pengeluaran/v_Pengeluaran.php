@@ -41,7 +41,7 @@
             	<input type="hidden" name="id" value="">
             	<div class="form-group">
             		<label class="control-label"> Nominal Pengeluaran</label>
-            		<div><input type="text" required="" placeholder="Nominal Pemasukan" onkeypress="return Angka(this)" autocomplete="off" name="nominal" class="form-control"></div>
+            		<div><input type="text" required="" placeholder="Nominal Pengeluaran" onkeypress="return Angka(this)" autocomplete="off" name="nominal" class="form-control"></div>
             	</div>
                 <div class="form-group">
                     <label class="control-label">Jenis Pengeluaran</label>
